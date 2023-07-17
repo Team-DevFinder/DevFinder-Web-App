@@ -45,7 +45,7 @@ export const IndividualProject = (props) => {
         // const reversedReviews = reviewData.data.results.reverse();
         // setReviews(reversedReviews);
 
-        setReviews(reviewData.data);
+        setReviews(reviewData.data.results);
       } catch (err) {
         // handle errors for this specific await statement
         console.error("Error fetching reviews:", err);
@@ -80,7 +80,7 @@ export const IndividualProject = (props) => {
       console.log(response);
       setShouldFetchProject(true);
     } else {
-      toast.error("No NSFW images allowed");
+      toast.error("Profane comments not allowed");
     }
   };
 

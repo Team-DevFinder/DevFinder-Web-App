@@ -25,7 +25,7 @@ export const Inbox = () => {
       `user-api/profiles/${currentUUID}/messages/`
     );
     console.log(response);
-    setMessages(response.data);
+    setMessages(response.data.results);
     console.log(messages);
   };
 

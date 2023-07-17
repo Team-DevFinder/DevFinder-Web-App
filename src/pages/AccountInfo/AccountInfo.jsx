@@ -15,6 +15,7 @@ import { AddSkillModal } from "../../components/AddSkillModal/AddSkillModal";
 import defaultImage from "../../assets/default-image.svg";
 import { RxCrossCircled } from "react-icons/rx";
 import toast, { Toaster } from "react-hot-toast";
+import { GoMarkGithub } from "react-icons/go";
 
 export const AccountInfo = (props) => {
   const { currentUUID } = useContext(AuthContext);
@@ -50,7 +51,7 @@ export const AccountInfo = (props) => {
       `/user-api/profiles/${currentUUID}/projects/`
     );
     console.log("projects", projectsResponse);
-    setProject(projectsResponse.data);
+    setProject(projectsResponse.data.results);
   };
 
   // const fetchProjects = async() => {
@@ -137,6 +138,16 @@ export const AccountInfo = (props) => {
 
                 <p className={styles.developerLocation}>
                   <TiLocation size={22} />: {profile.location}
+                </p>
+
+                <p>
+                  <a
+                    href={profile.socialGithub}
+                    target="_blank"
+                    className={styles.link}
+                  >
+                    <GoMarkGithub size={23} />
+                  </a>
                 </p>
 
                 <Link to={"/account/edit"} state={{ url: profile.url }}>

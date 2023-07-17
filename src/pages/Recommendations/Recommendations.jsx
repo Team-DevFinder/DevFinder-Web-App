@@ -6,23 +6,20 @@ import { AuthContext } from "../../context/AuthContext";
 import { useContext, useState } from "react";
 import { baseURL } from "../../utils/config";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const Recommendations = () => {
   const { currentUUID } = useContext(AuthContext);
-
-  const api = useAxios();
-
   const navigate = useNavigate();
+  const api = useAxios();
 
   const [users, setUsers] = useState([]);
 
   const fetchReccommended = async () => {
     const response = await api.get(`user-api/similar/`);
     console.log(response);
-    // const fetchedUsers = response.data.results; #for deployed
-    const fetchedUsers = response.data;
+    const fetchedUsers = response.data.results;
+    // const fetchedUsers = response.data; #for local
     const filteredUsers = fetchedUsers.filter(
       (elem, index) =>
         fetchedUsers.findIndex((obj) => obj.username === elem.username) ===

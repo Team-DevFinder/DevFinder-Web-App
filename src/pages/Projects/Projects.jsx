@@ -6,13 +6,15 @@ import { useNavigate } from "react-router";
 import { ProjectCard } from "../../components/ProjectCard/ProjectCard";
 import { Link } from "react-router-dom";
 import { Footer } from "../../components/Footer/Footer";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Pagination } from "../../components/Pagination/Pagination";
 import { baseURL } from "../../utils/config";
+import { AuthContext } from "../../context/AuthContext";
 
 export const Projects = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
+  const { logoutUser, isLoggedIn } = useContext(AuthContext);
   const [myData, setMyData] = useState([]);
   const [isError, setIsError] = useState("");
 
@@ -55,15 +57,27 @@ export const Projects = () => {
       return (
         // render each item
         <>
-          <Link to="/projects/project" state={{ url: item.url }}>
-            <ProjectCard
-              image={item.featuredImage}
-              projectName={item.title}
-              projectDeveloper={item.owner}
-              // projectFeedback={item.voteRatio}
-              // voteCount={item.voteTotal}
-            />
-          </Link>
+          {!isLoggedIn ? (
+            <Link to="/login" key={item.url} state={{ url: item.url }}>
+              <ProjectCard
+                image={item.featuredImage}
+                projectName={item.title}
+                projectDeveloper={item.owner}
+                // projectFeedback={item.voteRatio}
+                // voteCount={item.voteTotal}
+              />
+            </Link>
+          ) : (
+            <Link to="/projects/project" state={{ url: item.url }}>
+              <ProjectCard
+                image={item.featuredImage}
+                projectName={item.title}
+                projectDeveloper={item.owner}
+                // projectFeedback={item.voteRatio}
+                // voteCount={item.voteTotal}
+              />
+            </Link>
+          )}
         </>
       );
     });

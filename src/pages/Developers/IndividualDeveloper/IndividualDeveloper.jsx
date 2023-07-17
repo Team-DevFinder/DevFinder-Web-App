@@ -37,7 +37,7 @@ export const IndividualDeveloper = () => {
     // projects
     const projectsResponse = await api.get(`${profileUrl}projects/`);
     console.log("projects", projectsResponse);
-    setProject(projectsResponse.data);
+    setProject(projectsResponse.data.results);
   };
 
   useEffect(() => {
