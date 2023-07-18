@@ -122,13 +122,17 @@
     color: var(--first-color);
 }
 .profileImg{
-    height: 4.0em;
+    height: 5.0em;
+    /* height: 80px; */
+    /* vertical-align: middle; */
     position: absolute;
     z-index: 3;
     /* border: 4px solid lightseagreen; */
     border-radius: 50%;
     top: 0;
-    margin-top: -2.27rem;
+    /* margin-top: -2.27rem; */
+    margin-top: -2.5rem;
+    object-fit: contain;
 }
 .skillSection{
     /* width: 100%; */
