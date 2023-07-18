@@ -31,6 +31,7 @@ export const Home = () => {
     }
   };
 
+
   return (
     <>
       <div className={styles.wrapper}>
@@ -72,7 +73,9 @@ export const Home = () => {
                   style={{ color: "blue" }}
                 />
                 <p className={styles.folderName}>
+
                   ~/hello/welcome-to-devFinder/home
+                  
                 </p>
               </div>
 
@@ -83,8 +86,13 @@ export const Home = () => {
                 onKeyDown={handleKeyDown}
                 className={styles.terminal}
               >
-                <label style={{ color: "#eb7724" }}>{value}</label>
-                <label>{value2}</label>
+                <span contentEditable={false} style={{}}>
+                  <label contentEditable={false} style={{ color: "#eb7724" }}>{value}</label>
+                  <label contentEditable={false}>{value2}</label>
+                
+                </span>
+                <span contentEditable={false} style={{margin: '0 18px'}}></span>
+                
               </div>
             </div>
           </div>
