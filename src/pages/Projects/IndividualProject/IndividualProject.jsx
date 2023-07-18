@@ -88,6 +88,18 @@ export const IndividualProject = (props) => {
     fetchProject();
   }, []);
 
+  const handleReviewDelete = async (reviewId) => {
+    const response = await api.delete(
+      `${baseURL}project-api/reviews/${reviewId}/delete/`
+    );
+    if (response.status === 204) {
+      toast.success("Comment deleted");
+      fetchProject();
+    } else {
+      toast.error("Error deleting comment");
+    }
+  };
+
   return (
     <>
       <div className={styles.wrapper}>
@@ -176,6 +188,8 @@ export const IndividualProject = (props) => {
                   image={`${baseURL}${items.owner?.profileImage}`}
                   username={items.owner?.username}
                   comment={items.body}
+                  handleReviewDelete={() => handleReviewDelete(items.id)}
+                  ownerId={items.owner.ownerId}
                 />
               </>
             ))}

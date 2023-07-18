@@ -1,16 +1,41 @@
-.userImage{
-    height: 2.5em;
-    border-radius: 50%;
-    border: 2px solid lightseagreen;
-    margin-top: 1em;
-    
-}
-.review{
-    display: flex;
-    align-items: start;
-    gap: 0.75em;
-}
-.rightQuotes{
-    float: right;
+.userImage {
+  height: 2.5em;
+  border-radius: 50%;
+  border: 2px solid lightseagreen;
+  margin-top: 1em;
 }
 
+.review {
+  display: flex;
+  align-items: start;
+  gap: 0.75em;
+
+  position: relative;
+}
+
+.boxContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment {
+  word-break: break-all;
+}
+
+.rightQuotes {
+  align-self: flex-end;
+}
+
+.iconsContainer {
+  display: flex;
+  margin-top: 0.5rem;
+}
+
+.deleteIcon {
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+}
+.editIcon {
+  cursor: pointer;
+}
