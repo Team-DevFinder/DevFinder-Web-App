@@ -124,10 +124,14 @@
 }
 .developerImage{
     display: block;
+    /* height: 10em; */
+    width: 55%;
     height: 10em;
     margin: 0 auto;
     border: 6px solid var(--first-color);
     border-radius: 50%;
+    object-fit: cover;
+
     
 }
 .developerName{
