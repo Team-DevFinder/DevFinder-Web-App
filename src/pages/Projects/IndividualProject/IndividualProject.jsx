@@ -31,7 +31,7 @@ export const IndividualProject = (props) => {
   const fetchProject = async () => {
     try {
       const response = await api.get(url);
-      console.log(response);
+      console.log("project: ", response);
       const project = response.data;
       setMyData(project);
       setTags(project.tags.map((tag) => tag.name));
@@ -39,7 +39,7 @@ export const IndividualProject = (props) => {
       console.log(`${url}reviews/`);
       try {
         const reviewData = await api.get(`${url}reviews/`);
-        console.log(reviewData);
+        console.log("reviews ", reviewData);
         console.log(reviewData.data);
 
         // const reversedReviews = reviewData.data.results.reverse();
@@ -64,8 +64,6 @@ export const IndividualProject = (props) => {
     body: reviewBody,
   };
 
-  const [shouldFetchProject, setShouldFetchProject] = useState(false);
-
   const createReview = async () => {
     console.log(reviewBody);
     const reviewTest = {
@@ -78,7 +76,9 @@ export const IndividualProject = (props) => {
         body: reviewBody,
       });
       console.log(response);
-      setShouldFetchProject(true);
+      setReviewBody("");
+      toast.success("Comment posted");
+      fetchProject();
     } else {
       toast.error("Profane comments not allowed");
     }
@@ -86,9 +86,7 @@ export const IndividualProject = (props) => {
 
   useEffect(() => {
     fetchProject();
-
-    setShouldFetchProject(false);
-  }, [shouldFetchProject]);
+  }, []);
 
   return (
     <>
@@ -157,6 +155,7 @@ export const IndividualProject = (props) => {
             <textarea
               className={styles.commentSection}
               id=""
+              value={reviewBody}
               onChange={(e) => {
                 setReviewBody(e.target.value);
               }}
