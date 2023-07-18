@@ -45,26 +45,37 @@ export const ProjectForm = () => {
     const imageData = new FormData();
     imageData.append("image", selectedFile);
 
-    const responseNSFW = await api.post(
-      `${baseURL}project-api/image/mod/`,
-      imageData
+    const response = await api.post(
+      `${baseURL}project-api/projects/create/`,
+      formData
     );
-    console.log(responseNSFW);
-
-    if (responseNSFW.data.prediction != "image is nsfw") {
-      const response = await api.post(
-        `${baseURL}project-api/projects/create/`,
-        formData
-      );
-      console.log(response);
-      if (response.status === 201) {
-        navigate(`/account`);
-      } else {
-        console.log("error: couldn't add project");
-      }
+    console.log(response);
+    if (response.status === 201) {
+      navigate(`/account`);
     } else {
-      toast.error("No NSFW images allowed");
+      console.log("error: couldn't add project");
     }
+
+    // const responseNSFW = await api.post(
+    //   `${baseURL}project-api/image/mod/`,
+    //   imageData
+    // );
+    // console.log(responseNSFW);
+
+    // if (responseNSFW.data.prediction != "image is nsfw") {
+    //   const response = await api.post(
+    //     `${baseURL}project-api/projects/create/`,
+    //     formData
+    //   );
+    //   console.log(response);
+    //   if (response.status === 201) {
+    //     navigate(`/account`);
+    //   } else {
+    //     console.log("error: couldn't add project");
+    //   }
+    // } else {
+    //   toast.error("No NSFW images allowed");
+    // }
   };
 
   return (

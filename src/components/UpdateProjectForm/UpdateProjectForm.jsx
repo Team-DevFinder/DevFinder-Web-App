@@ -58,27 +58,27 @@ export const UpdateProjectForm = () => {
       const imageData = new FormData();
       imageData.append("image", selectedFile);
 
-      const responseNSFW = await api.post(
-        `${baseURL}project-api/image/mod/`,
-        imageData
-      );
-      console.log(responseNSFW);
+      // const responseNSFW = await api.post(
+      //   `${baseURL}project-api/image/mod/`,
+      //   imageData
+      // );
+      // console.log(responseNSFW);
 
-      if (responseNSFW.data.prediction != "image is nsfw") {
-        const response = await api.patch(
-          `${location.state.url}update/`,
-          formData
-        );
-        console.log(response);
-        if (response.status == 200) {
-          navigate(`/account`);
-        } else {
-          console.log("error: couldn't update project");
-        }
-      } else {
-        toast.error("No NSFW images allowed");
-        return;
-      }
+      // if (responseNSFW.data.prediction != "image is nsfw") {
+      //   const response = await api.patch(
+      //     `${location.state.url}update/`,
+      //     formData
+      //   );
+      //   console.log(response);
+      //   if (response.status == 200) {
+      //     navigate(`/account`);
+      //   } else {
+      //     console.log("error: couldn't update project");
+      //   }
+      // } else {
+      //   toast.error("No NSFW images allowed");
+      //   return;
+      // }
     }
 
     const response = await api.patch(`${location.state.url}update/`, formData);
