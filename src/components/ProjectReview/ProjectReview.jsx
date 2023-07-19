@@ -31,7 +31,7 @@ export const ProjectReview = (props) => {
           <p className={styles.comment}>{props.comment}</p>
 
           <ImQuotesRight className={styles.rightQuotes} />
-          {currentUUID === props.ownerId ? (
+          {currentUUID === props.ownerId && (
             <div className={styles.iconsContainer}>
               <MdEdit className={styles.editIcon} size={20} />
               <MdDelete
@@ -40,7 +40,7 @@ export const ProjectReview = (props) => {
                 onClick={props.handleReviewDelete}
               />
             </div>
-          ) : null}
+          )}
         </div>
       </div>
       <hr />

@@ -33,7 +33,7 @@ export const ManageRoutes = () => {
       <Route path="/login" element={<Login />} />
       {/* <Route path="/signup" element={<SignUp />} /> */}
       <Route path="/add-project" element={<AddProject />} />
-      <Route path="/update-project" element={<UpdateProject />} />
+      <Route path="/update-project/:id" element={<UpdateProject />} />
       <Route path="/modal" element={<Modal />} />
       <Route path="/account" element={<AccountInfo />} />
       <Route path="/account/edit" element={<EditProfile />} />

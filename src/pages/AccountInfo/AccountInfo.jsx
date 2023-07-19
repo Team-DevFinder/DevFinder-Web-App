@@ -73,6 +73,12 @@ export const AccountInfo = (props) => {
     toast.error("Your project has been removed");
   };
 
+  const updateProject = async (projUrl) => {
+    const splitString = projUrl.split("/");
+    const projId = splitString[5];
+    navigate(`/update-project/${projId}`);
+  };
+
   const [skills, setSkills] = useState(props.skills);
 
   const fetchSkills = async () => {
@@ -103,10 +109,6 @@ export const AccountInfo = (props) => {
     }
   };
 
-  const handleNavigate = () => {
-    navigate("/account");
-  };
-
   const deleteSkill = async (skillId) => {
     const response = await api.delete(
       `/user-api/profiles/${currentUUID}/skills/${skillId}/delete/`
@@ -115,6 +117,16 @@ export const AccountInfo = (props) => {
     if (response.status === 204) {
       setOperatedSkill(true);
     }
+  };
+
+  const handleContainerClick = (event, projUrl) => {
+    if (event.target === event.currentTarget) {
+      navigate(`/projects/project/projId`, { state: { url: projUrl } });
+    }
+  };
+
+  const handleElementClick = (projUrl) => {
+    navigate(`/projects/project`, { state: { url: projUrl } });
   };
 
   return (
@@ -256,17 +268,20 @@ export const AccountInfo = (props) => {
                     <div onClick={() => deleteProject(proj.url)}>Delete</div>
                     <Link to={`/update-project`} state={{url: proj.url}}><div>Update</div></Link>
                     <br /> */}
-                  <Link to="/projects/project" state={{ url: proj.url }}>
-                    <ProjectLongCard
-                      owner={proj.owner}
-                      title={proj.title}
-                      image={proj.featuredImage}
-                      projectUrl={proj.url}
-                      deleteProject={deleteProject}
-                      sourceLink={proj.sourceLink}
-                      demoLink={proj.demoLink}
-                    />
-                  </Link>
+                  {/* <Link to="/projects/project" state={{ url: proj.url }}> */}
+                  <ProjectLongCard
+                    owner={proj.owner}
+                    title={proj.title}
+                    image={proj.featuredImage}
+                    projectUrl={proj.url}
+                    deleteProject={deleteProject}
+                    updateProject={updateProject}
+                    sourceLink={proj.sourceLink}
+                    demoLink={proj.demoLink}
+                    handleContainerClick={handleContainerClick}
+                    handleElementClick={handleElementClick}
+                  />
+                  {/* </Link> */}
                 </>
               ))}
             </div>

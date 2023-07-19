@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./UpdateProjectForm.module.css";
 import { useAxios } from "../../utils/useAxios";
 import { baseURL } from "../../utils/config";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, useParams } from "react-router-dom";
 import { TiTick } from "react-icons/ti";
 import { locale } from "dayjs";
 import toast, { Toaster } from "react-hot-toast";
@@ -16,9 +16,12 @@ export const UpdateProjectForm = () => {
   const [tags, setTags] = useState([]);
   const [newTag, setNewTag] = useState("");
 
+  const { id } = useParams();
+  const projectUrl = `http://127.0.0.1:8000/project-api/projects/${id}/`;
+
   const handleAddTag = async () => {
     setTags([...tags, newTag]);
-    const response = await api.post(`${location.state.url}tags/create/`, {
+    const response = await api.post(`${projectUrl}tags/create/`, {
       name: newTag,
     });
     console.log(response);
@@ -26,7 +29,7 @@ export const UpdateProjectForm = () => {
   };
 
   const fetchProject = async () => {
-    const response = await api.get(`${location.state.url}`);
+    const response = await api.get(`${projectUrl}`);
     console.log(response);
     setProject(response.data);
     setTags(response.data.tags.map((tag) => tag.name));
@@ -66,7 +69,7 @@ export const UpdateProjectForm = () => {
 
       // if (responseNSFW.data.prediction != "image is nsfw") {
       //   const response = await api.patch(
-      //     `${location.state.url}update/`,
+      //     `${projectUrl}update/`,
       //     formData
       //   );
       //   console.log(response);
@@ -81,7 +84,7 @@ export const UpdateProjectForm = () => {
       // }
     }
 
-    const response = await api.patch(`${location.state.url}update/`, formData);
+    const response = await api.patch(`${projectUrl}update/`, formData);
     console.log(response);
     if (response.status == 200) {
       navigate(`/account`);
