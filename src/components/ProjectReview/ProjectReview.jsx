@@ -33,7 +33,7 @@ export const ProjectReview = (props) => {
           <ImQuotesRight className={styles.rightQuotes} />
           {currentUUID === props.ownerId && (
             <div className={styles.iconsContainer}>
-              <MdEdit className={styles.editIcon} size={20} />
+              {/* <MdEdit className={styles.editIcon} size={20} /> */}
               <MdDelete
                 className={styles.deleteIcon}
                 size={20}
