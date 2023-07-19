@@ -17,7 +17,7 @@ export const UpdateProjectForm = () => {
   const [newTag, setNewTag] = useState("");
 
   const { id } = useParams();
-  const projectUrl = `http://127.0.0.1:8000/project-api/projects/${id}/`;
+  const projectUrl = `${baseURL}project-api/projects/${id}/`;
 
   const handleAddTag = async () => {
     setTags([...tags, newTag]);
