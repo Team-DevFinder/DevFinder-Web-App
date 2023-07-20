@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./OpenMessage.module.css";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import { useAxios } from "../../../utils/useAxios";
 import { RxCross2 } from "react-icons/rx";
 import { useContext } from "react";

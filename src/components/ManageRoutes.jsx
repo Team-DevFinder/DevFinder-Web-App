@@ -28,7 +28,7 @@ export const ManageRoutes = () => {
       <Route path="/developers" element={<Developers />} />
       <Route path="/inbox" element={<Inbox />} />
       <Route path="/projects" element={<Projects />} />
-      <Route path="/projects/project" element={<IndividualProject />} />
+      <Route path="/projects/project/:id" element={<IndividualProject />} />
       <Route
         path="/developers/developer/:id"
         element={<IndividualDeveloper />}

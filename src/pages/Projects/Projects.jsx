@@ -58,7 +58,7 @@ export const Projects = () => {
         // render each item
         <>
           {!isLoggedIn ? (
-            <Link to="/login" key={item.url} state={{ url: item.url }}>
+            <Link to="/login" key={item.url}>
               <ProjectCard
                 image={item.featuredImage}
                 projectName={item.title}
@@ -68,7 +68,7 @@ export const Projects = () => {
               />
             </Link>
           ) : (
-            <Link to="/projects/project" state={{ url: item.url }}>
+            <Link to={`/projects/project/${item.url.split("/")[5]}`}>
               <ProjectCard
                 image={item.featuredImage}
                 projectName={item.title}
@@ -87,7 +87,7 @@ export const Projects = () => {
     return (
       <>
         {filteredProjects.map((project) => (
-          <Link to="/projects/project" state={{ url: project.url }}>
+          <Link to={`/projects/project/${project.url.split("/")[5]}`}>
             <ProjectCard
               image={project.featuredImage}
               projectName={project.title}

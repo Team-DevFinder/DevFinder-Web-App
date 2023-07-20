@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./IndividualProject.module.css";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import ProjectImage from "../../../assets/banner5.jpg";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -16,29 +16,27 @@ import toast, { Toaster } from "react-hot-toast";
 export const IndividualProject = (props) => {
   const [myData, setMyData] = useState([]);
   const [isError, setIsError] = useState("");
-  const location = useLocation();
   const [show, setShow] = useState(false);
   const [reviews, setReviews] = useState([]);
   const [reviewProfiles, setReviewProfiles] = useState([]);
   const [tags, setTags] = useState([]);
 
-  // console.log(location);
-  const url = location.state?.url;
-  // console.log(url);
+  const { id } = useParams();
+  const projUrl = `/project-api/projects/${id}/`;
 
   const api = useAxios();
 
   const fetchProject = async () => {
     try {
-      const response = await api.get(url);
+      const response = await api.get(projUrl);
       console.log("project: ", response);
       const project = response.data;
       setMyData(project);
       setTags(project.tags.map((tag) => tag.name));
 
-      console.log(`${url}reviews/`);
+      console.log(`${projUrl}reviews/`);
       try {
-        const reviewData = await api.get(`${url}reviews/`);
+        const reviewData = await api.get(`${projUrl}reviews/`);
         console.log("reviews ", reviewData);
         console.log(reviewData.data);
 
@@ -72,7 +70,7 @@ export const IndividualProject = (props) => {
     const responseNSFW = await api.post(`project-api/review/mod/`, reviewTest);
     console.log("nsfw", responseNSFW);
     if (responseNSFW.data.prediction === "Review is clean") {
-      const response = await api.post(`${url}reviews/create/`, {
+      const response = await api.post(`${projUrl}reviews/create/`, {
         body: reviewBody,
       });
       console.log(response);
