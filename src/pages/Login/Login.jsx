@@ -77,6 +77,16 @@ export const Login = () => {
   //   const
   // }
 
+  const [showLoginPage, setShowLoginPage] = useState(true);
+
+  const handleSignUpClick = () => {
+    setShowLoginPage(false);
+  };
+
+  const handleLoginClick = () => {
+    setShowLoginPage(true);
+  };
+
   return (
     <>
       <main>
@@ -280,6 +290,99 @@ export const Login = () => {
             </div>
           </div>
         </div>
+
+        
+
+        <div className={styles.wrapper2}>
+          <BounceLoader
+            loading={loading}
+            color="#eb7724"
+            size={70}
+            style={{
+              zIndex: "100000000000",
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+            }}
+          />
+          <div className={styles.container}>
+            <div className={styles.formsWraps}>
+
+            
+
+            <form
+                action="#"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                }}
+                className={styles.signInContainer}
+                
+              >
+                <h2 style={{ color: "#fff" }} onClick={testAuth}>
+                  Log In
+                </h2>{" "}
+                <br />
+                <div className={styles.actualForm}>
+                  <input
+                    className={styles.inputField}
+                    type="text"
+                    placeholder="Username"
+                    onChange={(e) => {
+                      setSignInUsername(e.target.value);
+                    }}
+                  />
+                  <input
+                    className={styles.inputField}
+                    type="password"
+                    placeholder="Password"
+                    onChange={(e) => {
+                      setSignInPassword(e.target.value);
+                    }}
+                  />
+                  <p
+                    className={styles.link}
+                    onClick={() => {
+                      navigate("/forgot-password");
+                    }}
+                  >
+                    Forgot your password?
+                  </p>
+                  <br />
+                  {/* <ForgotPassword onClose={() => setShow(true)} show={show} /> */}
+                  <button
+                    className={styles.button}
+                    onClick={() => handleLogin()}
+                  >
+                    Sign In
+                  </button>
+                  <div className={styles.paragraph}>OR</div>
+                  <button className={styles.googleBtn} onClick={googleLogin}>
+                    <FcGoogle size={22} style={{ margin: "0 10px 0 0" }} />
+                    <p>Continue with Google</p>
+                  </button>
+                </div>
+
+                <p>Do not have an account?</p>
+                <button  className={styles.button} onClick={() => {
+                      navigate("/signup");
+                    }}>
+                    Sign Up
+                </button>
+              </form>
+
+             
+
+              
+              
+            </div>
+
+            
+              
+            
+          </div>
+        </div>
+
+        
       </main>
       <Toaster />
     </>
