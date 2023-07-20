@@ -29,7 +29,10 @@ export const ManageRoutes = () => {
       <Route path="/inbox" element={<Inbox />} />
       <Route path="/projects" element={<Projects />} />
       <Route path="/projects/project" element={<IndividualProject />} />
-      <Route path="/developers/developer" element={<IndividualDeveloper />} />
+      <Route
+        path="/developers/developer/:id"
+        element={<IndividualDeveloper />}
+      />
       <Route path="/login" element={<Login />} />
       {/* <Route path="/signup" element={<SignUp />} /> */}
       <Route path="/add-project" element={<AddProject />} />

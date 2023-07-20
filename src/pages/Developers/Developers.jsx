@@ -46,7 +46,8 @@ export const Developers = () => {
   };
 
   const handleClick = (profileUrl) => {
-    navigate("/developers/developer", { state: { url: profileUrl } });
+    const devId = profileUrl.split("/")[5];
+    navigate(`/developers/developer/${devId}`);
   };
 
   const renderData = () => {

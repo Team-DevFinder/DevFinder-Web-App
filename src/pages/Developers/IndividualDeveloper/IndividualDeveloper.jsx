@@ -7,7 +7,7 @@ import { TiLocation } from "react-icons/ti";
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { useAxios } from "../../../utils/useAxios";
-import { useLocation, useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useParams } from "react-router-dom";
 import { Modal } from "../../../components/Modal/Modal";
 import { AuthContext } from "../../../context/AuthContext";
 import defaultImage from "../../../assets/default-image.svg";
@@ -18,18 +18,16 @@ export const IndividualDeveloper = () => {
   const [profile, setProfile] = useState();
   const [project, setProject] = useState([]);
   const [show, setShow] = useState(false);
+  const { id } = useParams();
+  const profileUrl = `/user-api/profiles/${id}/`;
 
   const navigate = useNavigate();
 
   const api = useAxios();
 
-  const location = useLocation();
-
   const defaultText = "No projects";
 
   const fetchProfile = async () => {
-    console.log(location);
-    const profileUrl = location.state.url;
     const response = await api.get(profileUrl);
     console.log("profile", response.data);
     setProfile(response.data);
@@ -47,7 +45,7 @@ export const IndividualDeveloper = () => {
   const [skills, setSkills] = useState([]);
 
   const fetchSkills = async () => {
-    const response = await api.get(`${location.state.url}skills/`);
+    const response = await api.get(`${profileUrl}skills/`);
     console.log("skills", response);
     setSkills(response.data);
   };
@@ -85,7 +83,7 @@ export const IndividualDeveloper = () => {
                   className={styles.sendBtn}
                   onClick={() => {
                     navigate("/send-message", {
-                      state: { url: location.state.url },
+                      state: { url: profileUrl },
                     });
                   }}
                 >
