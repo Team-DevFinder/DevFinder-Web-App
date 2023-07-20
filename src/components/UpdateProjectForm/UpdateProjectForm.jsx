@@ -2,14 +2,13 @@ import React, { useEffect, useState } from "react";
 import styles from "./UpdateProjectForm.module.css";
 import { useAxios } from "../../utils/useAxios";
 import { baseURL } from "../../utils/config";
-import { useNavigate, useLocation, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { TiTick } from "react-icons/ti";
 import { locale } from "dayjs";
 import toast, { Toaster } from "react-hot-toast";
 
 export const UpdateProjectForm = () => {
   const api = useAxios();
-  const location = useLocation();
   const navigate = useNavigate();
 
   const [project, setProject] = useState();

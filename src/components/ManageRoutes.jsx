@@ -36,7 +36,7 @@ export const ManageRoutes = () => {
       <Route path="/update-project/:id" element={<UpdateProject />} />
       <Route path="/modal" element={<Modal />} />
       <Route path="/account" element={<AccountInfo />} />
-      <Route path="/account/edit" element={<EditProfile />} />
+      <Route path="/account/edit/:id" element={<EditProfile />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/reset-password" element={<ResetPassword />} />
       <Route path="/send-message" element={<SendMessage />} />

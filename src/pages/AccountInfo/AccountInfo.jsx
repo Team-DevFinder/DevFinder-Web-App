@@ -61,14 +61,14 @@ export const AccountInfo = (props) => {
 
   useEffect(() => {
     fetchProfile();
-    setOperatedProject(false);
-  }, [operatedProject]);
+  }, []);
+  // console.log("test ", profile.bio);
 
   const deleteProject = async (url) => {
     const response = await api.delete(`${url}delete/`);
     console.log(response);
     if (response.status === 204) {
-      setOperatedProject(true);
+      fetchProfile();
     }
     toast.error("Your project has been removed");
   };
@@ -162,7 +162,7 @@ export const AccountInfo = (props) => {
                   </a>
                 </p>
 
-                <Link to={"/account/edit"} state={{ url: profile.url }}>
+                <Link to={`/account/edit/${currentUUID}`}>
                   <button className={styles.editBtn}>Edit Profile</button>
                 </Link>
               </div>

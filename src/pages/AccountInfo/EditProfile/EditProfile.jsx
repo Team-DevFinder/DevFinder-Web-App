@@ -2,16 +2,17 @@ import React, { useEffect, useState } from "react";
 import styles from "./EditProfile.module.css";
 import { useAxios } from "../../../utils/useAxios";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { baseURL } from "../../../utils/config";
 import { useNavigate } from "react-router-dom";
 import { BounceLoader } from "react-spinners";
 import toast, { Toaster } from "react-hot-toast";
 
 export const EditProfile = () => {
-  const location = useLocation();
   const api = useAxios();
   const navigate = useNavigate();
+  const { id } = useParams();
+  const profileUrl = `/user-api/profiles/${id}/`;
 
   const [profileData, setProfileData] = useState();
   const [userImage, setUserImage] = useState(null);
@@ -19,7 +20,7 @@ export const EditProfile = () => {
   const [loading, setLoading] = useState(false);
 
   const fetchProfile = async () => {
-    const response = await api.get(`${location.state.url}`);
+    const response = await api.get(`${profileUrl}`);
     console.log(response);
     setProfileData(response.data);
 
@@ -99,7 +100,6 @@ export const EditProfile = () => {
     // console.log(responseNSFW);
 
     // if (responseNSFW.data.prediction != "image is nsfw") {
-    //   const profileUrl = location.state.url;
     //   const response = await api.post(`${profileUrl}update/`, formData);
     //   console.log(response);
     //   navigate(`/account/`);
@@ -110,10 +110,8 @@ export const EditProfile = () => {
     //   toast.error("No NSFW images allowed");
     // }
 
-    const profileUrl = location.state.url;
     const response = await api.post(`${profileUrl}update/`, formData);
     setLoading(false);
-    console.log(response);
     navigate(`/account/`);
   };
 
