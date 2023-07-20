@@ -82,9 +82,7 @@ export const IndividualDeveloper = () => {
                 <button
                   className={styles.sendBtn}
                   onClick={() => {
-                    navigate("/send-message", {
-                      state: { url: profileUrl },
-                    });
+                    navigate(`/send-message/${id}`);
                   }}
                 >
                   Send Message

@@ -45,7 +45,7 @@ export const ManageRoutes = () => {
       <Route path="/account/edit/:id" element={<EditProfile />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/reset-password" element={<ResetPassword />} />
-      <Route path="/send-message" element={<SendMessage />} />
+      <Route path="/send-message/:id" element={<SendMessage />} />
       <Route path="/open-message" element={<OpenMessage />} />
       <Route path="/recommended-developers" element={<Recommendations />} />
       <Route path="*" element={<PageNotFound />} />

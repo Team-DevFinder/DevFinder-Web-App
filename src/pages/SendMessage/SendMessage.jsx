@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from "react";
 import styles from "./SendMessage.module.css";
 import { RxCross2 } from "react-icons/rx";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useAxios } from "../../utils/useAxios";
 import toast, { Toaster } from "react-hot-toast";
 
 export const SendMessage = () => {
   const navigate = useNavigate();
-
-  const location = useLocation();
-  console.log(location);
   const api = useAxios();
+  const { id } = useParams();
+  const profileUrl = `/user-api/profiles/${id}/`;
 
   const [receiverUsername, setReceiverUsername] = useState("");
 
   const fetchReceiverProfile = async () => {
-    const response = await api.get(`${location.state.url}`);
+    const response = await api.get(`${profileUrl}`);
     console.log("profile", response);
     setReceiverUsername(response.data.username);
   };
@@ -32,7 +31,6 @@ export const SendMessage = () => {
       subject: subject,
       body: body,
     };
-    const profileUrl = location.state.url;
     const response = await api.post(`${profileUrl}create-message/`, message);
     notifySuccess();
     console.log("send message", response);
