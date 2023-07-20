@@ -4,6 +4,9 @@
     display: flex;
     background-color: #2e2c2c;
 }
+.wrapper2{
+    display: none;
+}
 .container{
     background-color: #000;
  border-radius: 10px;
@@ -306,6 +309,9 @@ transition: transform 0.6s ease-in-out;
         margin-top: 1.85em;
         z-index: 10;
     }
+    .rightOverlayPanel{
+        display: none;
+    }
     
     .leftOverlayPanel{
         display: none;
@@ -315,5 +321,8 @@ transition: transform 0.6s ease-in-out;
        
     }
     
-
+    .wrapper2{
+        display: block;
+        height: 1vh;
+    }
 }

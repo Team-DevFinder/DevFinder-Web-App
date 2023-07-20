@@ -20,6 +20,7 @@ import { SendMessage } from "../pages/SendMessage/SendMessage";
 import { OpenMessage } from "../pages/Inbox/OpenMessage/OpenMessage";
 import { Recommendations } from "../pages/Recommendations/Recommendations";
 import PageNotFound from "../pages/PageNotFound/PageNotFound";
+import { SignUp } from "../pages/Login/SignUp";
 
 export const ManageRoutes = () => {
   return (
@@ -34,6 +35,8 @@ export const ManageRoutes = () => {
         element={<IndividualDeveloper />}
       />
       <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<SignUp />} />
+
       {/* <Route path="/signup" element={<SignUp />} /> */}
       <Route path="/add-project" element={<AddProject />} />
       <Route path="/update-project/:id" element={<UpdateProject />} />

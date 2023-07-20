@@ -14,6 +14,8 @@ import { SearchBar } from "../SearchBar/SearchBar";
 import { AuthContext } from "../../context/AuthContext";
 import { FiUser } from "react-icons/fi";
 import { TbHeartHandshake } from "react-icons/tb";
+import { useRef } from "react";
+
 
 export const Navbar = () => {
   const IconStyle = { color: "white" };
@@ -32,10 +34,27 @@ export const Navbar = () => {
     navigate("/login");
   };
 
+  let menuRef = useRef();
+
+  useEffect(() => {
+    const handleOutsideClick = (e) => {
+      if (!menuRef.current.contains(e.target) && !e.target.closest(".navLink")) {
+        setNavbarOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, []);
+  
+
   return (
     <>
-      <header className="header">
-        <div className="headerContainer">
+      <header className="header" >
+        <div className="headerContainer" ref={menuRef} >
           {/* <h3>DevFinder</h3> */}
           <img className="logo" src={Logo} alt="" />
 
@@ -73,7 +92,7 @@ export const Navbar = () => {
         </div>
       </header>
       <div className="nav">
-        <nav className={`navContainer ${navbarOpen ? "navOpen" : "navClosed"}`}>
+        <nav className={`navContainer ${navbarOpen ? "navOpen" : "navClosed"}`} >
           <div>
             <Link className="navLink navLogo">
               <span className="navLogoName" style={{ color: "#eb7724" }}>
