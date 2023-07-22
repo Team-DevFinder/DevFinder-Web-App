@@ -4,6 +4,7 @@ import { useAxios } from "../../utils/useAxios";
 import banner from "../../assets/banner5.jpg";
 import ForumCard from "../../components/ForumCard/ForumCard";
 import { useNavigate } from "react-router-dom";
+import AddForumModal from "../../components/AddForumModal/AddForumModal";
 
 const Forums = () => {
   const api = useAxios();
@@ -25,13 +26,21 @@ const Forums = () => {
     navigate(`/forums/${forumId}`);
   };
 
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <>
       <div className={styles.container}>
         <div className={styles.header}>
           <div className={styles.title}>Forums</div>
-          <button className={styles.createButton}>Create Forum</button>
+          <button
+            className={styles.createButton}
+            onClick={() => setShowModal(true)}
+          >
+            Create Forum
+          </button>
         </div>
+        {showModal && <AddForumModal closeModal={() => setShowModal(false)} />}
         <div className={styles.cardsContainer}>
           <ForumCard
             thumbnail={banner}

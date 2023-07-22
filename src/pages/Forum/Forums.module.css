@@ -25,6 +25,10 @@
   cursor: pointer;
 }
 
+.createButton:hover {
+  background-color: #e38039;
+}
+
 .cardsContainer {
   margin-left: 1rem;
   margin-right: 2rem;

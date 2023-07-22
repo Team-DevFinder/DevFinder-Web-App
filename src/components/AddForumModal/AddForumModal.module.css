@@ -1,0 +1,133 @@
+.modal {
+  z-index: 10000;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContainer {
+  height: 20rem;
+  width: 20rem;
+  background-color: #161617;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 4px;
+}
+
+.modalContainer > * + * {
+  margin-top: 1rem;
+}
+
+.modalTitle {
+  width: calc(100% - 2rem);
+}
+
+.modalTitle {
+  outline: none;
+  background-color: #161617;
+  border: 1px solid #343536;
+  color: white;
+  margin-top: 0.5rem;
+
+  width: calc(100% - 2rem);
+  height: 2rem;
+  font-size: 1rem;
+  padding-left: 0.5rem;
+  border-radius: 4px;
+}
+
+.modalTitle:focus {
+  border: 1px solid white;
+}
+
+.modalDescription {
+  outline: none;
+  background-color: #161617;
+  border: 1px solid #343536;
+  color: white;
+  margin-top: 0.5rem;
+
+  width: calc(100% - 2rem);
+  height: 8rem;
+  font-size: 1rem;
+  padding-left: 0.5rem;
+  border-radius: 4px;
+  padding-top: 0.5rem;
+
+  resize: none;
+}
+
+.modalDescription:focus {
+  border: 1px solid white;
+}
+
+.modalThumbnail {
+  margin-top: 2rem;
+}
+
+.modalThumbnail button {
+  background-color: #161617;
+  border: 1px solid #343536;
+  color: white;
+  cursor: pointer;
+
+  border-radius: 8px;
+  height: 2rem;
+}
+
+.modalThumbnail button:hover {
+  background-color: #1b1b1d;
+}
+
+.buttons {
+  margin-top: 2.5rem;
+  display: flex;
+  width: calc(100% - 2rem);
+  justify-content: space-between;
+}
+
+.postButton {
+  background-color: #cbcdcf;
+  border: none;
+  cursor: pointer;
+  color: #343536;
+  font-weight: 600;
+  height: 2rem;
+  width: 4rem;
+  border-radius: 1rem;
+}
+
+.postButton:hover {
+  background-color: #a5a7a8;
+}
+
+.cancelButton {
+  background-color: #161617;
+  border: 1px solid #818385;
+  cursor: pointer;
+  color: #818385;
+  font-weight: 600;
+  height: 2rem;
+  width: 4rem;
+  border-radius: 1rem;
+}
+
+.cancelButton:hover {
+  background-color: #2e2e31;
+}
+
+@media only screen and (max-width: 350px) {
+  .modalContainer {
+    height: 15rem;
+    width: 15rem;
+  }
+}
