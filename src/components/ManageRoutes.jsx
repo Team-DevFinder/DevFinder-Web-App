@@ -22,6 +22,7 @@ import { Recommendations } from "../pages/Recommendations/Recommendations";
 import PageNotFound from "../pages/PageNotFound/PageNotFound";
 import { SignUp } from "../pages/Login/SignUp";
 import Forum from "../pages/Forum/Forum";
+import IndividualForum from "../pages/Forum/IndividualForum/IndividualForum";
 
 export const ManageRoutes = () => {
   return (
@@ -49,7 +50,12 @@ export const ManageRoutes = () => {
       <Route path="/send-message/:id" element={<SendMessage />} />
       <Route path="/open-message" element={<OpenMessage />} />
       <Route path="/recommended-developers" element={<Recommendations />} />
+
+      {/* forum */}
       <Route path="/forum" element={<Forum />} />
+      <Route path="/forum/:id" element={<IndividualForum />} />
+      {/* 404 page */}
+
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
