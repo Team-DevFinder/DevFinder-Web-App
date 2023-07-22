@@ -1,0 +1,32 @@
+.card {
+  display: flex;
+  background-color: #161617;
+  border-radius: 4px;
+  border: 1.5px solid #343536;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.card:hover {
+  border: 1.5px solid white;
+}
+
+.thumbnail img {
+  height: 10rem;
+  margin: 0.5rem;
+}
+
+.cardInfo {
+  margin-top: 0.5rem;
+}
+
+.cardTitle {
+  color: #d7dadc;
+  font-size: 1.3rem;
+}
+
+.createdBy {
+  color: #6c7493;
+  font-size: 1rem;
+  margin-top: 0.2rem;
+}

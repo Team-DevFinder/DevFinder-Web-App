@@ -1,0 +1,61 @@
+.container {
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 1rem;
+  margin-right: 2rem;
+  margin-top: 1rem;
+}
+
+.title {
+  font-size: 2rem;
+  color: white;
+}
+
+.createButton {
+  border: none;
+  padding: 1rem 2rem;
+  background-color: #eb7724;
+  color: white;
+  font-size: 1rem;
+  border-radius: 9999px;
+  cursor: pointer;
+}
+
+.cardsContainer {
+  margin-left: 1rem;
+  margin-right: 2rem;
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  display: flex;
+  background-color: #161617;
+  border-radius: 4px;
+  border: 1.5px solid #343536;
+}
+
+.thumbnail img {
+  height: 10rem;
+  margin: 0.5rem;
+}
+
+.cardInfo {
+  margin-top: 0.5rem;
+}
+
+.cardTitle {
+  color: #d7dadc;
+  font-size: 1.3rem;
+}
+
+.cardCreated {
+  color: #6c7493;
+  font-size: 1rem;
+  margin-top: 0.2rem;
+}

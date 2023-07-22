@@ -21,7 +21,7 @@ import { OpenMessage } from "../pages/Inbox/OpenMessage/OpenMessage";
 import { Recommendations } from "../pages/Recommendations/Recommendations";
 import PageNotFound from "../pages/PageNotFound/PageNotFound";
 import { SignUp } from "../pages/Login/SignUp";
-import Forum from "../pages/Forum/Forum";
+import Forums from "../pages/Forum/Forums";
 import IndividualForum from "../pages/Forum/IndividualForum/IndividualForum";
 
 export const ManageRoutes = () => {
@@ -52,8 +52,8 @@ export const ManageRoutes = () => {
       <Route path="/recommended-developers" element={<Recommendations />} />
 
       {/* forum */}
-      <Route path="/forum" element={<Forum />} />
-      <Route path="/forum/:id" element={<IndividualForum />} />
+      <Route path="/forums" element={<Forums />} />
+      <Route path="/forums/:id" element={<IndividualForum />} />
       {/* 404 page */}
 
       <Route path="*" element={<PageNotFound />} />

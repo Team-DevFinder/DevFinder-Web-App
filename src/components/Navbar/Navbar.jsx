@@ -127,9 +127,9 @@ export const Navbar = () => {
                       <span className="navName">Developers</span>
                     </Link>
 
-                    <Link to="/forum" className="navLink">
+                    <Link to="/forums" className="navLink">
                       <GiDiscussion className="navIcon" />
-                      <span className="navName">Forum</span>
+                      <span className="navName">Forums</span>
                     </Link>
 
                     <Link to="/projects" className="navLink">
