@@ -21,6 +21,7 @@ import { OpenMessage } from "../pages/Inbox/OpenMessage/OpenMessage";
 import { Recommendations } from "../pages/Recommendations/Recommendations";
 import PageNotFound from "../pages/PageNotFound/PageNotFound";
 import { SignUp } from "../pages/Login/SignUp";
+import Forum from "../pages/Forum/Forum";
 
 export const ManageRoutes = () => {
   return (
@@ -48,6 +49,7 @@ export const ManageRoutes = () => {
       <Route path="/send-message/:id" element={<SendMessage />} />
       <Route path="/open-message" element={<OpenMessage />} />
       <Route path="/recommended-developers" element={<Recommendations />} />
+      <Route path="/forum" element={<Forum />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
