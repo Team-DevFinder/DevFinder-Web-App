@@ -11,11 +11,20 @@ const AddForumModal = (props) => {
         className={styles.modalContainer}
         onClick={(e) => e.stopPropagation()}
       >
-        <input placeholder="Title" className={styles.modalTitle} />
+        <input
+          placeholder="Title"
+          className={styles.modalTitle}
+          onChange={(e) => {
+            props.setForumTitle(e.target.value);
+          }}
+        />
 
         <textarea
           placeholder="Description"
           className={styles.modalDescription}
+          onChange={(e) => {
+            props.setForumDescription(e.target.value);
+          }}
         />
 
         <div className={styles.modalThumbnail}>
@@ -26,10 +35,20 @@ const AddForumModal = (props) => {
           >
             <BsImage style={{ paddingTop: "3px" }} /> Upload Thumbnail
           </button>
-          <input type="file" ref={fileRef} style={{ display: "none" }} />
+          <div>{props.forumImage?.name}</div>
+          <input
+            type="file"
+            ref={fileRef}
+            style={{ display: "none" }}
+            onChange={(e) => {
+              props.setForumImage(e.target.files[0]);
+            }}
+          />
         </div>
         <div className={styles.buttons}>
-          <button className={styles.postButton}>Post</button>
+          <button className={styles.postButton} onClick={props.handlePost}>
+            Post
+          </button>
           <button className={styles.cancelButton} onClick={props.closeModal}>
             Cancel
           </button>

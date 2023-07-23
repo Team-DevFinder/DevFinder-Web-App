@@ -92,16 +92,12 @@ export const AccountInfo = (props) => {
     setOperatedSkill(false);
   }, [operatedSkill]);
 
-  const [newSkill, setNewSkill] = useState("Test");
-
-  const dummySkill = {
-    name: newSkill,
-  };
+  const [newSkill, setNewSkill] = useState("");
 
   const addSkill = async () => {
     const response = await api.post(
       `/user-api/profiles/${currentUUID}/skills/create/`,
-      dummySkill
+      { name: newSkill }
     );
     console.log(response);
     if (response.status === 201) {
