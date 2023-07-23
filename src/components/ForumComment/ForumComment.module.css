@@ -1,0 +1,23 @@
+.commentCard {
+  border-left: 1px solid gray;
+  padding-left: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.commentPoster {
+  /* color: #6c7493; */
+  color: #eb7724;
+  font-size: 0.9rem;
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+.metaText {
+  color: #6c7493;
+}
+
+.commentBody {
+  color: #d7dadc;
+  font-size: 1rem;
+  overflow-wrap: break-word;
+  font-family: "Noto Sans", sans-serif;
+}

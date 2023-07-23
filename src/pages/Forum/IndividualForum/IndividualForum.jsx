@@ -5,12 +5,15 @@ import { useParams } from "react-router-dom";
 import defaultImg from "../../../assets/banner5.jpg";
 import ForumPost from "../../../components/ForumPost/ForumPost";
 import { toast, Toaster } from "react-hot-toast";
+import formatDate from "../../../utils/formatDate";
+import ForumComment from "../../../components/ForumComment/ForumComment";
 
 const IndividualForum = () => {
   const api = useAxios();
   const { id } = useParams();
 
   const [currentForum, setCurrentForum] = useState();
+  const [comments, setComments] = useState([]);
 
   const getData = async () => {
     const response = await api.get(`user-api/forums/`);
@@ -19,6 +22,7 @@ const IndividualForum = () => {
     const filteredForum = forums.find((forum) => forum.id === id);
     console.log(filteredForum);
     setCurrentForum(filteredForum);
+    setComments(filteredForum.discussions);
   };
 
   useEffect(() => {
@@ -84,8 +88,27 @@ const IndividualForum = () => {
           comment={comment}
           setComment={setComment}
           handleComment={handleComment}
+          time={formatDate(currentForum?.created_at)}
         />
-        <div>Comment Section</div>
+        <div className={styles.commentsContainer}>
+          <ForumComment
+            creator={"Username"}
+            message={dummy.title}
+            time={"July 22, 2023"}
+          />
+          <ForumComment
+            creator={"Username"}
+            message={dummy.desc}
+            time={"July 22, 2023"}
+          />
+          {comments.map((forumComment) => (
+            <ForumComment
+              creator={forumComment.creator}
+              message={forumComment.message}
+              time={formatDate(forumComment.created_at)}
+            />
+          ))}
+        </div>
       </div>
     </>
   );

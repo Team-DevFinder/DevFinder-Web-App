@@ -1,6 +1,7 @@
 .postContainer {
   background-color: #161617;
-  border-radius: 4px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
   margin-top: 1rem;
   width: 60rem;
   margin-left: 4rem;
@@ -74,6 +75,15 @@
 
 .commentButton:hover {
   background-color: #a5a7a8;
+}
+
+.separator {
+  border: 0;
+  height: 1px;
+  background: #333;
+  background-image: linear-gradient(to right, #ccc, #333, #ccc);
+  margin-top: 1.5rem;
+  margin-bottom: 0rem;
 }
 
 @media only screen and (max-width: 1130px) {

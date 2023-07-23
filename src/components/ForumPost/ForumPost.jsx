@@ -5,7 +5,9 @@ const ForumPost = (props) => {
   return (
     <div className={styles.postContainer}>
       <div className={styles.postTitle}>{props.title}</div>
-      <div className={styles.postCreator}>{props.creator}</div>
+      <div className={styles.postCreator}>
+        {props.creator} &middot; {props.time}
+      </div>
       <img src={props.thumbnail} className={styles.postImage} />
       <div className={styles.postDesc}>{props.description}</div>
       <textarea
@@ -21,6 +23,7 @@ const ForumPost = (props) => {
           Comment
         </button>
       </div>
+      <hr className={styles.separator} />
     </div>
   );
 };

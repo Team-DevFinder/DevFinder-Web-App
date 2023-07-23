@@ -6,6 +6,7 @@ import ForumCard from "../../components/ForumCard/ForumCard";
 import { useNavigate } from "react-router-dom";
 import AddForumModal from "../../components/AddForumModal/AddForumModal";
 import { toast, Toaster } from "react-hot-toast";
+import formatDate from "../../utils/formatDate";
 
 const Forums = () => {
   const api = useAxios();
@@ -118,6 +119,7 @@ const Forums = () => {
               createdBy={forum.creator}
               forumId={forum.id}
               handleNavigate={handleNavigate}
+              time={formatDate(forum.created_at)}
             />
           ))}
         </div>
