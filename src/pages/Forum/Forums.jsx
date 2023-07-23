@@ -7,17 +7,36 @@ import { useNavigate } from "react-router-dom";
 import AddForumModal from "../../components/AddForumModal/AddForumModal";
 import { toast, Toaster } from "react-hot-toast";
 import formatDate from "../../utils/formatDate";
+import PaginationNew from "../../components/PaginationNew/PaginationNew";
+
+import { GrFormNext } from "react-icons/gr";
+import { GrFormPrevious } from "react-icons/gr";
 
 const Forums = () => {
   const api = useAxios();
   const navigate = useNavigate();
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
   const [forums, setForums] = useState([]);
 
   const getData = async () => {
-    const response = await api.get(`user-api/forums/`);
+    const response = await api.get(`user-api/forums/?page=${currentPage}`);
     console.log(response);
     setForums(response.data.results);
+    setTotalPages(Math.ceil(response.data.count / 6));
+  };
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage((prevPage) => prevPage + 1);
+    }
+  };
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prevPage) => prevPage - 1);
+    }
   };
 
   const [defaultThumbnail, setDefaultThumbnail] = useState(null);
@@ -40,7 +59,7 @@ const Forums = () => {
   useEffect(() => {
     getData();
     convertImageToFile();
-  }, []);
+  }, [currentPage]);
 
   const handleNavigate = (forumId) => {
     navigate(`/forums/${forumId}`);
@@ -129,6 +148,12 @@ const Forums = () => {
             />
           ))}
         </div>
+        <PaginationNew
+          currentPage={currentPage}
+          totalPages={totalPages}
+          handleNextPage={handleNextPage}
+          handlePreviousPage={handlePreviousPage}
+        />
       </div>
     </>
   );
