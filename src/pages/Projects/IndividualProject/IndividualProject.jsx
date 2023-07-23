@@ -73,13 +73,17 @@ export const IndividualProject = (props) => {
     });
     console.log("nsfw", responseNSFW);
     if (responseNSFW.data.prediction === "Review is clean") {
-      const response = await api.post(`${projUrl}reviews/create/`, {
-        body: reviewBody,
-      });
-      console.log(response);
-      setReviewBody("");
-      toast.success("Comment posted");
-      fetchProject();
+      try {
+        const response = await api.post(`${projUrl}reviews/create/`, {
+          body: reviewBody,
+        });
+        console.log(response);
+        setReviewBody("");
+        toast.success("Comment posted");
+        fetchProject();
+      } catch (error) {
+        toast.error("Error posting comment :(");
+      }
     } else {
       toast.error("Profane comments not allowed");
     }
