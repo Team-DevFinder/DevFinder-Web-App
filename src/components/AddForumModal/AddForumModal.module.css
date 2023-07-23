@@ -14,13 +14,13 @@
 
 .modalContainer {
   height: 20rem;
-  width: 20rem;
+  width: 30rem;
   background-color: #161617;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
 .modalContainer > * + * {
@@ -96,6 +96,7 @@
   display: flex;
   width: calc(100% - 2rem);
   justify-content: space-between;
+  margin-bottom: 0.5rem;
 }
 
 .postButton {
@@ -128,9 +129,18 @@
   background-color: #2e2e31;
 }
 
+@media only screen and (max-width: 560px) {
+  .modalContainer {
+    width: 25rem;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .modalContainer {
+    width: 22rem;
+  }
+}
 @media only screen and (max-width: 350px) {
   .modalContainer {
-    height: 15rem;
     width: 15rem;
   }
 }

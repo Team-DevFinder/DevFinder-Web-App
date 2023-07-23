@@ -75,6 +75,9 @@ const Forums = () => {
       if (response.status == 201) {
         toast.success("Forum created");
         setShowModal(false);
+        setForumImage(null);
+        getData();
+        convertImageToFile();
       } else {
         toast.error("error :(");
       }
@@ -98,7 +101,10 @@ const Forums = () => {
         </div>
         {showModal && (
           <AddForumModal
-            closeModal={() => setShowModal(false)}
+            closeModal={() => {
+              setShowModal(false);
+              setForumImage(null);
+            }}
             setForumTitle={setForumTitle}
             setForumDescription={setForumDescription}
             setForumImage={setForumImage}
