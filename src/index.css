@@ -1,32 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates&family=Mulish:wght@800&family=Outfit:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates&family=Mulish:wght@800&family=Outfit:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&family=Noto+Sans:wght@400&display=swap");
 
-
-:root{
+:root {
   --header-height: 3.5rem;
   --nav-width: 219px;
 
   --first-color: #eb7724;
-  --first-color-alt:	#2948c7;
+  --first-color-alt: #2948c7;
   --first-color-light: #5670d7;
   --first-color-lighten: #f0f3ff;
   --second-color: #eb7724;
   --title-color: #1f2f70;
-  --text-color:	#6c7493;
-  --text-color-light: 	#b8bbc7;
-  --border-color: 	#f5f7ff;
+  --text-color: #6c7493;
+  --text-color-light: #b8bbc7;
+  --border-color: #f5f7ff;
   --body-color: #fff;
   --container-color: #fff;
 
-  --hero-font: 'Mulish', sans-serif; 
-  --header-font: 'Montserrat Alternates', sans-serif;
-  --body-font: 'Outfit', sans-serif;
+  --hero-font: "Mulish", sans-serif;
+  --header-font: "Montserrat Alternates", sans-serif;
+  --body-font: "Outfit", sans-serif;
   --biggest-font-size: 2.25rem;
   --h1-font-size: 1.5rem;
   --h2-font-size: 1.25rem;
   --h3-font-size: 1rem;
-  --normal-font-size: .938rem;
-  --small-font-size: .813rem;
-  --smaller-font-size: .75rem;
+  --normal-font-size: 0.938rem;
+  --small-font-size: 0.813rem;
+  --smaller-font-size: 0.75rem;
   --font-medium: 500;
   --font-semi-bold: 600;
 
@@ -35,7 +35,7 @@
 }
 
 @media screen and (min-width: 1024px) {
-  :root{
+  :root {
     --biggest-font-size: 4rem;
     --h1-font-size: 2.25rem;
     --h2-font-size: 1.5rem;
@@ -46,11 +46,13 @@
   }
 }
 
-*, ::before, ::after{
+*,
+::before,
+::after {
   box-sizing: border-box;
 }
 
-body{
+body {
   margin: 3.05rem 0 0 0;
   padding: 1rem 1rem 0;
   font-family: var(--body-font);
@@ -60,20 +62,22 @@ body{
   overflow-x: hidden;
 }
 
-h1, h2, h3{
+h1,
+h2,
+h3 {
   margin: 0;
   /* color: var(--title-color); */
   font-weight: var(--font-semi-bold);
 }
-li{
+li {
   list-style-type: none;
 }
 
-a{
+a {
   text-decoration: none;
   cursor: pointer;
 }
-img{
+img {
   max-width: 100%;
   height: auto;
 }
@@ -85,13 +89,13 @@ hr {
   margin: 1.5em 0;
   padding: 0;
 }
-html{
+html {
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;
 }
 
 @media screen and (max-width: 768px) {
-  body{
+  body {
     padding: 0;
   }
 }

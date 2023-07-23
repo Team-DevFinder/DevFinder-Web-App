@@ -64,10 +64,13 @@ export const IndividualProject = (props) => {
 
   const createReview = async () => {
     console.log(reviewBody);
-    const reviewTest = {
+    if (reviewBody === "") {
+      toast.error("Review cannot be empty :(");
+      return;
+    }
+    const responseNSFW = await api.post(`project-api/review/mod/`, {
       comment: reviewBody,
-    };
-    const responseNSFW = await api.post(`project-api/review/mod/`, reviewTest);
+    });
     console.log("nsfw", responseNSFW);
     if (responseNSFW.data.prediction === "Review is clean") {
       const response = await api.post(`${projUrl}reviews/create/`, {

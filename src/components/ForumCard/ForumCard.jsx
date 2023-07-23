@@ -14,7 +14,7 @@ const ForumCard = (props) => {
       </div>
       <div className={styles.cardInfo}>
         <div className={styles.cardTitle}>{props.cardTitle}</div>
-        <div className={styles.createdBy}>Created by {props.createdBy}</div>
+        <div className={styles.createdBy}>Posted by {props.createdBy}</div>
       </div>
     </div>
   );
