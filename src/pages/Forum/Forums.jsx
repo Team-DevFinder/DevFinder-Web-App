@@ -23,7 +23,7 @@ const Forums = () => {
   const getData = async () => {
     const response = await api.get(`user-api/forums/?page=${currentPage}`);
     console.log(response);
-    setForums(response.data.results);
+    setForums(response.data);
     setTotalPages(Math.ceil(response.data.count / 6));
   };
 
@@ -77,19 +77,19 @@ const Forums = () => {
     formData.append("title", forumTitle);
     formData.append("description", forumDescription);
 
-    // if (forumImage === null) {
-    //   formData.append("image", defaultThumbnail);
-    //   console.log(defaultThumbnail);
-    // } else {
-    //   formData.append("image", forumImage);
-    // }
+    if (forumImage === null) {
+      formData.append("thumbnail", defaultThumbnail);
+      console.log(defaultThumbnail);
+    } else {
+      formData.append("thumbnail", forumImage);
+    }
 
-    // for (const bruh of formData) {
-    //   console.log(bruh);
-    // }
+    for (const bruh of formData) {
+      console.log(bruh);
+    }
 
     try {
-      const response = await api.post(`user-api/forums/`, formData);
+      const response = await api.post(`user-api/forums/create/`, formData);
       console.log(response);
       if (response.status == 201) {
         toast.success("Forum created");
@@ -137,7 +137,7 @@ const Forums = () => {
             cardTitle={"ChatGPT vs BRAD"}
             createdBy={"user"}
           />
-          {forums.map((forum) => (
+          {forums?.map((forum) => (
             <ForumCard
               thumbnail={defaultImage}
               cardTitle={forum.title}

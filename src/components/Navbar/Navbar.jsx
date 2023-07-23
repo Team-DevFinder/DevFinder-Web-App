@@ -142,6 +142,11 @@ export const Navbar = () => {
                       <span className="navName">Inbox</span>
                     </Link>
 
+                    <Link to="/chat" className="navLink">
+                      <TbMessageCircle className="navIcon" />
+                      <span className="navName">Chat</span>
+                    </Link>
+
                     <Link to="" className="navLink" onClick={handleLogout}>
                       <MdOutlineLogout className="navIcon" />
                       <span className="navName">Logout</span>

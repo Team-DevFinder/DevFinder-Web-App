@@ -159,7 +159,7 @@ export const ProjectForm = () => {
           </div>
 
           <div className={styles.displayTags}>
-            {tags.map((tag, index) => (
+            {tags?.map((tag, index) => (
               <span
                 key={index}
                 className="tag"

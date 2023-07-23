@@ -23,6 +23,7 @@ import PageNotFound from "../pages/PageNotFound/PageNotFound";
 import { SignUp } from "../pages/Login/SignUp";
 import Forums from "../pages/Forum/Forums";
 import IndividualForum from "../pages/Forum/IndividualForum/IndividualForum";
+import Chat from "../pages/Chat/Chat";
 
 export const ManageRoutes = () => {
   return (
@@ -51,11 +52,14 @@ export const ManageRoutes = () => {
       <Route path="/open-message" element={<OpenMessage />} />
       <Route path="/recommended-developers" element={<Recommendations />} />
 
-      {/* forum */}
+      {/* Forum */}
       <Route path="/forums" element={<Forums />} />
       <Route path="/forums/:id" element={<IndividualForum />} />
-      {/* 404 page */}
 
+      {/* Chat */}
+      <Route path="/chat" element={<Chat />} />
+
+      {/* 404 page */}
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );

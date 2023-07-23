@@ -171,7 +171,7 @@ export const UpdateProjectForm = () => {
           </div>
 
           <div>
-            {tags.map((tag, index) => (
+            {tags?.map((tag, index) => (
               <span
                 key={index}
                 className="tag"

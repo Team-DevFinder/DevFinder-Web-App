@@ -95,7 +95,7 @@ export const Developers = () => {
   const renderFiltered = () => {
     return (
       <>
-        {filteredUsers.map((item) => (
+        {filteredUsers?.map((item) => (
           <div key={item.url}>
             <DevCard
               name={item.username}

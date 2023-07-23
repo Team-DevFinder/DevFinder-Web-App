@@ -101,7 +101,7 @@ const IndividualForum = () => {
             message={dummy.desc}
             time={"July 22, 2023"}
           />
-          {comments.map((forumComment) => (
+          {comments?.map((forumComment) => (
             <ForumComment
               creator={forumComment.creator}
               message={forumComment.message}
