@@ -110,7 +110,7 @@ export const IndividualDeveloper = () => {
             <h2>PROJECTS</h2>
             <div className={styles.projectSection}>
               {project?.map((proj) => (
-                <Link to="/projects/project" state={{ url: proj.url }}>
+                <Link to={`/projects/project/${proj.url.split("/")[5]}`}>
                   <ShortProjectCard
                     image={proj.featuredImage}
                     projectName={proj.title}

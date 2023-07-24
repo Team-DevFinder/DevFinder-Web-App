@@ -8,9 +8,7 @@ import AddForumModal from "../../components/AddForumModal/AddForumModal";
 import { toast, Toaster } from "react-hot-toast";
 import formatDate from "../../utils/formatDate";
 import PaginationNew from "../../components/PaginationNew/PaginationNew";
-
-import { GrFormNext } from "react-icons/gr";
-import { GrFormPrevious } from "react-icons/gr";
+import { baseURL } from "../../utils/config";
 
 const Forums = () => {
   const api = useAxios();
@@ -19,12 +17,25 @@ const Forums = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [forums, setForums] = useState([]);
+  const [users, setUsers] = useState([]);
 
   const getData = async () => {
     const response = await api.get(`user-api/forums/?page=${currentPage}`);
-    console.log(response);
-    setForums(response.data);
+    console.log("intial res", response);
+    const forumData = response.data.results;
+    setForums(forumData);
     setTotalPages(Math.ceil(response.data.count / 6));
+
+    const userIds = forumData.map((forum) => forum.creator);
+    console.log("userID", userIds);
+    const userProfiles = await Promise.all(
+      userIds.map(async (id) => {
+        const res = await api.get(`user-api/profiles/${id}/`);
+        return res.data;
+      })
+    );
+    console.log("userProfiles", userProfiles);
+    setUsers(userProfiles);
   };
 
   const handleNextPage = () => {
@@ -137,16 +148,19 @@ const Forums = () => {
             cardTitle={"ChatGPT vs BRAD"}
             createdBy={"user"}
           />
-          {forums?.map((forum) => (
-            <ForumCard
-              thumbnail={defaultImage}
-              cardTitle={forum.title}
-              createdBy={forum.creator}
-              forumId={forum.id}
-              handleNavigate={handleNavigate}
-              time={formatDate(forum.created_at)}
-            />
-          ))}
+          {forums?.map((forum, index) => {
+            const currentUser = users[index];
+            return (
+              <ForumCard
+                thumbnail={`${baseURL}${forum.thumbnail}`}
+                cardTitle={forum.title}
+                createdBy={currentUser?.username}
+                forumId={forum.id}
+                handleNavigate={handleNavigate}
+                time={formatDate(forum.created_at)}
+              />
+            );
+          })}
         </div>
         <PaginationNew
           currentPage={currentPage}
