@@ -7,6 +7,11 @@ import ForumPost from "../../../components/ForumPost/ForumPost";
 import { toast, Toaster } from "react-hot-toast";
 import formatDate from "../../../utils/formatDate";
 import ForumComment from "../../../components/ForumComment/ForumComment";
+import { baseURL } from "../../../utils/config";
+
+// const response = await api.delete(
+//   `user-api/forums/${id}/discussions/a3389329-5403-4f14-b0dd-dd8852d17c65/delete`
+// );
 
 const IndividualForum = () => {
   const api = useAxios();
@@ -14,15 +19,22 @@ const IndividualForum = () => {
 
   const [currentForum, setCurrentForum] = useState();
   const [comments, setComments] = useState([]);
+  const [user, setUser] = useState();
 
   const getData = async () => {
-    const response = await api.get(`user-api/forums/`);
+    const response = await api.get(`user-api/forums/${id}/`);
     console.log(response);
-    const forums = response.data.results;
-    const filteredForum = forums.find((forum) => forum.id === id);
-    console.log(filteredForum);
-    setCurrentForum(filteredForum);
-    setComments(filteredForum.discussions);
+    const forumData = response.data;
+    setCurrentForum(forumData);
+
+    const commentData = forumData.discussions;
+    console.log("commentData", commentData);
+    setComments(commentData);
+
+    const userId = forumData.creator;
+    const userData = await api.get(`user-api/profiles/${userId}/`);
+    console.log("userData", userData.data);
+    setUser(userData.data);
   };
 
   useEffect(() => {
@@ -44,9 +56,12 @@ const IndividualForum = () => {
 
     if (responseNSFW.data.prediction === "Review is clean") {
       try {
-        const response = await api.post(`user-api/forums/${id}/discussions/`, {
-          message: comment,
-        });
+        const response = await api.post(
+          `user-api/forums/${id}/discussions/create/`,
+          {
+            message: comment,
+          }
+        );
         console.log(response);
         setComment("");
         toast.success("Comment posted");
@@ -81,7 +96,7 @@ const IndividualForum = () => {
         <ForumPost
           // title={currentForum?.title}
           title={dummy.title}
-          creator={currentForum?.creator}
+          creator={user?.username}
           thumbnail={defaultImg}
           // description={currentForum?.description}
           description={dummy.desc}

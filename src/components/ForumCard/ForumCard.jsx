@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./ForumCard.module.css";
+import { MdDelete } from "react-icons/md";
 
 const ForumCard = (props) => {
   return (
@@ -18,6 +19,7 @@ const ForumCard = (props) => {
           Posted by {props.createdBy} on {props.time}
         </div>
       </div>
+      <MdDelete className={styles.deleteButton} />
     </div>
   );
 };

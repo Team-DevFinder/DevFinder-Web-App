@@ -116,6 +116,11 @@ const Forums = () => {
     }
   };
 
+  // onClick={() => {
+  //   api.delete(
+  //     "http://127.0.0.1:8000/user-api/forums/4a3fee1c-a072-43b9-96ce-29c32865e472/delete/"
+  //   );
+  // }}
   return (
     <>
       <Toaster />
