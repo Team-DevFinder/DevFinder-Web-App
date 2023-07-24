@@ -6,19 +6,26 @@ import defaultImg from "../../assets/default-image.svg";
 const Chat = () => {
   return (
     <div className={styles.container}>
-      <div>List</div>
-      <div>List</div>
-      {/* <InboxCard
-        // imageURL={`${baseURL}${items.pfp}`}
-        username={"items.name"}
-        subject={"items.subject"}
-        content={"items.body"}
-        // time={"items.createdAt"}
-      />
       <div className={styles.chatsContainer}>
-        <img src={defaultImg} />
-        <div>username</div>
-      </div> */}
+        <div className={styles.chatCard}>
+          <div className={styles.chatImage}>
+            <img src={defaultImg} />
+          </div>
+          <div className={styles.chatInfo}>
+            <div className={styles.chatName}>Username</div>
+            <div className={styles.chatMessage}>This is the latest message</div>
+          </div>
+        </div>
+        <div className={styles.chatCard}>
+          <div className={styles.chatImage}>
+            <img src={defaultImg} />
+          </div>
+          <div className={styles.chatInfo}>
+            <div className={styles.chatName}>Username</div>
+            <div className={styles.chatMessage}>This is the latest message</div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
