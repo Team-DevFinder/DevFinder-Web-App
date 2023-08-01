@@ -197,23 +197,26 @@ export const AccountInfo = (props) => {
                 />
               </div>
               <div
-                style={{
-                  display: "flex",
-                  justifyContent: "start",
-                  gap: "0.75em",
-                }}
+                // style={{
+                //   display: "flex",
+                //   justifyContent: "start",
+                //   gap: "0.75em",
+                // }}
+                className={styles.skillContainer}
               >
                 {skills?.map((skill) => (
                   <>
-                    <button className={styles.skillsBtn}>{skill.name}</button>
+                    <button className={styles.skillsBtn}>
+                      {skill.name}
+                      <div
+                        className={styles.removeSkill}
+                        onClick={() => deleteSkill(skill.id)}
+                      >
+                        <RxCrossCircled />
+                      </div>
+                    </button>
 
-                    <div
-                      className={styles.removeSkill}
-                      onClick={() => deleteSkill(skill.id)}
-                    >
-                      <RxCrossCircled />
-                    </div>
-                    <br />
+                    {/* <br /> */}
                   </>
                 ))}
               </div>

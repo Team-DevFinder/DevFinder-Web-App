@@ -1,238 +1,229 @@
-.wrapper{
-    min-height: 100vh;
-    color: #fff;
+.wrapper {
+  min-height: 100vh;
+  color: #fff;
 }
 
-.developer{
-    position: relative;
-    display: flex;
-    width: 100%;
-    height: 100%;
-    padding: 2.2rem 5rem 2.2rem 4rem;
+.developer {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding: 2.2rem 5rem 2.2rem 4rem;
 }
-.developerProfile{
-    width: 25%;
-    position: fixed;
-    /* background-color: red; */
-    
+.developerProfile {
+  width: 25%;
+  position: fixed;
+  /* background-color: red; */
 }
-.developerInfo{
-    width: 75%;
-    margin-left: 30vw;
+.developerInfo {
+  width: 75%;
+  margin-left: 30vw;
 }
-.skill{
-    display: flex;
-    justify-content: space-evenly ;
+
+.skillContainer {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 0.7rem;
+  column-gap: 0.6rem;
 }
-.skillName{
-    margin-right: 3em;
+
+.skill {
+  display: flex;
+  justify-content: space-evenly;
 }
-.otherSkills{
-    display: flex;
-    gap: 0.813rem;
-    width: 100%;
-    margin: 0.5rem 0;
-    flex-wrap: wrap;
-    padding-bottom: clamp(1px, 4%, 4em);
+.skillName {
+  margin-right: 3em;
 }
-.skillsBtn{
-    background-color: #5670d7;
-    color: #fff;
-    outline: none;
-    border: 1px solid #333;
-    padding: 12px 18px;
-    font-weight: 500;
-    border-radius: 5px;
-    /* cursor: pointer; */
-    position: relative;
+.otherSkills {
+  display: flex;
+  gap: 0.813rem;
+  width: 100%;
+  margin: 0.5rem 0;
+  flex-wrap: wrap;
+  padding-bottom: clamp(1px, 4%, 4em);
 }
-.projectSection{
-    display: grid;
-    grid-template-columns: auto auto;
-    gap: 1em;
-    /* background-color: aqua; */
-    
+.skillsBtn {
+  background-color: #5670d7;
+  color: #fff;
+  outline: none;
+  border: 1px solid #333;
+  padding: 12px 18px;
+  font-weight: 500;
+  border-radius: 5px;
+  /* cursor: pointer; */
+  position: relative;
 }
-.removeSkill{
-  margin-left: -0.5em;
-  margin-right: 0.5em;
+.projectSection {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 1em;
+  /* background-color: aqua; */
+}
+.removeSkill {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  right: 0;
+  margin-top: -0.6rem;
+  margin-right: -0.6rem;
+}
+.removeSkill:hover {
+  color: red;
+}
+
+.card {
+  z-index: 1;
+  position: relative;
+  max-width: 400px;
+  height: 320px;
+  border: 1.3px solid #65647c;
+  border-radius: 8px;
+  margin: 2rem 0;
+  transition: 0.13s;
   cursor: pointer;
 }
-.removeSkill:hover{
-    color: red;
+.card:hover {
+  box-shadow: 0 0 10px 0 #eee inset, 0 0 10px 2px #eee;
+}
+.banner {
+  z-index: 1;
+  position: relative;
+  /* width: 100%; */
+  /* height: 40px; */
+  /* border-bottom: solid 1px lightgray; */
+}
+.projectImage {
+  height: 10em;
+  width: 100%;
+  object-fit: cover;
+  opacity: 0.85;
+  border-radius: 8px;
+
+  border-bottom: 1.5px solid lightseagreen;
 }
 
-.card{
-    z-index: 1;
-    position: relative;
-    max-width: 400px;
-    height: 320px;
-    border: 1.3px solid #65647C;
-    border-radius: 8px;
-    margin: 2rem 0;
-    transition: 0.13s;
-    cursor: pointer;
+.projectTitle {
+  font-size: 1.5em;
+  margin-left: -0.7em;
 }
-.card:hover{
-    box-shadow: 0 0 10px 0 #eee inset, 0 0 10px 2px #eee;
+.projectDeveloper {
+  font-size: 1em;
+  margin: 0.4em 0;
+  margin-left: -1em;
 }
-.banner{
-    z-index: 1;
-    position: relative;
-    /* width: 100%; */
-    /* height: 40px; */
-    /* border-bottom: solid 1px lightgray; */
-    
+.projectInfo {
+  padding-right: 1em;
 }
-.projectImage{
-    height: 10em;
-    width: 100%;
-    object-fit: cover;
-    opacity: 0.85;
-    border-radius: 8px;
-
-    border-bottom: 1.5px solid lightseagreen;
+.projectFeedback {
+  margin-left: -1em;
 }
 
-
-.projectTitle{
-    font-size: 1.5em;
-    margin-left: -0.7em;
-
+.developerCard {
+  /* border: 1px solid var(--title-color); */
+  padding: 3em 2em;
+  text-align: center;
+  border-radius: 4px;
+  width: 100%;
+  height: 100%;
+  /* height: 10em; */
 }
-.projectDeveloper{
-    font-size: 1em;
-    margin: 0.4em 0;
-    margin-left: -1em;
-
+.developerImage {
+  display: block;
+  /* height: 10em; */
+  width: 55%;
+  height: 10em;
+  margin: 0 auto;
+  border: 6px solid var(--first-color);
+  border-radius: 50%;
+  object-fit: cover;
 }
-.projectInfo{
-    padding-right:  1em;
+.developerName {
+  font-size: 1.8em;
 }
-.projectFeedback{
-    margin-left: -1em;
+.developerLocation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
-.developerCard{
-    /* border: 1px solid var(--title-color); */
-    padding: 3em 2em;
-    text-align: center;
-    border-radius: 4px;
-    width: 100%;
-    height: 100%;
-    /* height: 10em; */
+.developerPosition {
+  margin-top: -1.2em;
 }
-.developerImage{
-    display: block;
-    /* height: 10em; */
-    width: 55%;
-    height: 10em;
-    margin: 0 auto;
-    border: 6px solid var(--first-color);
-    border-radius: 50%;
-    object-fit: cover;
-
-    
+.editBtn {
+  background-color: #05445e;
+  /* opacity: 0.7; */
+  border: none;
+  padding: 18px 28px;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
 }
-.developerName{
-    font-size: 1.8em;
+.editBtn:hover {
+  background-color: #75e6da;
+  color: #333;
 }
-.developerLocation{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.addSkill {
+  background: #fff;
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: pointer;
 }
-.developerPosition{
-    margin-top: -1.2em;
+.skillHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.editBtn{
-    background-color: #05445E;
-    /* opacity: 0.7; */
-    border: none;
-    padding: 18px 28px;
-    color: #fff;
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: 4px;
-    cursor: pointer;
-}
-.editBtn:hover{
-    background-color: #75E6DA;
-    color: #333;
-}
-.addSkill{
-
-    background: #fff;
-    border: none;
-    outline: none;
-    display: flex;
-    align-items: center;
-    border-radius: 4px;
-    padding: 4px 8px;
-    cursor: pointer;
- 
-}
-.skillHeader{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-
-
-
 
 @media screen and (max-width: 1170px) {
-    .projectSection{
-        grid-template-columns: repeat(1, 1fr);
-    }
-    
-    
+  .projectSection {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 @media screen and (769px <= width <= 945px) {
-    .developerProfile{
-        width: 28%;
-    }
-    .developer{
-        padding: 2.2rem 3rem 2.2rem 2rem;
-    }
-    
+  .developerProfile {
+    width: 28%;
+  }
+  .developer {
+    padding: 2.2rem 3rem 2.2rem 2rem;
+  }
 }
-@media screen and (max-width: 768px){
-    .developer{
-        display: flex;
-        flex-direction: column;
-        padding: 0rem 2rem;
-    }
-    .developerProfile{
-        position: relative;
-    }
-    .developerCard{
-        display: flex;
-        min-width: 90vw;
-        height: 100%;
-        align-items: center;
-        justify-content: space-evenly;
-        padding: 2.5em 0;
-    }
-    .developerInfo{
-        margin-left: 0;
-        width: 100%;
-    }
+@media screen and (max-width: 768px) {
+  .developer {
+    display: flex;
+    flex-direction: column;
+    padding: 0rem 2rem;
+  }
+  .developerProfile {
+    position: relative;
+  }
+  .developerCard {
+    display: flex;
+    min-width: 90vw;
+    height: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 2.5em 0;
+  }
+  .developerInfo {
+    margin-left: 0;
+    width: 100%;
+  }
 }
-@media screen and (max-width: 450px){
-    .developerCard{
-        flex-direction: column;
-        min-width: 85vw;
-        
-        
-    }
-    .developerInfo{
-        text-align: justify;
-
-    }
-    .skill{
-        flex-direction: column;
-    }
+@media screen and (max-width: 450px) {
+  .developerCard {
+    flex-direction: column;
+    min-width: 85vw;
+  }
+  .developerInfo {
+    text-align: justify;
+  }
+  .skill {
+    flex-direction: column;
+  }
 }

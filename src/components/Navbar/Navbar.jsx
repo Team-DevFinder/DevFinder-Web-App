@@ -127,25 +127,25 @@ export const Navbar = () => {
                       <span className="navName">Developers</span>
                     </Link>
 
-                    <Link to="/forums" className="navLink">
+                    {/* <Link to="/forums" className="navLink">
                       <GiDiscussion className="navIcon" />
                       <span className="navName">Forums</span>
-                    </Link>
+                    </Link> */}
 
                     <Link to="/projects" className="navLink">
                       <HiCode className="navIcon" />
                       <span className="navName">Projects</span>
                     </Link>
 
-                    {/* <Link to="/inbox" className="navLink">
+                    <Link to="/inbox" className="navLink">
                       <TbMessageCircle className="navIcon" />
                       <span className="navName">Inbox</span>
-                    </Link> */}
+                    </Link>
 
-                    <Link to="/chat" className="navLink">
+                    {/* <Link to="/chat" className="navLink">
                       <TbMessageCircle className="navIcon" />
                       <span className="navName">Chat</span>
-                    </Link>
+                    </Link> */}
 
                     <Link to="" className="navLink" onClick={handleLogout}>
                       <MdOutlineLogout className="navIcon" />
