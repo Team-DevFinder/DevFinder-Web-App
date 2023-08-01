@@ -150,7 +150,7 @@ const Forums = () => {
         <div className={styles.cardsContainer}>
           <ForumCard
             thumbnail={defaultImage}
-            cardTitle={"ChatGPT vs BRAD"}
+            cardTitle={"ChatGPT vs BARD"}
             createdBy={"user"}
           />
           {forums?.map((forum, index) => {
