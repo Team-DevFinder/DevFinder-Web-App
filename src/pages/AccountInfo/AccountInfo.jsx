@@ -116,13 +116,15 @@ export const AccountInfo = (props) => {
   };
 
   const handleContainerClick = (event, projUrl) => {
+    const projId = projUrl.split("/")[5];
     if (event.target === event.currentTarget) {
-      navigate(`/projects/project/projId`, { state: { url: projUrl } });
+      navigate(`/projects/project/${projId}`, { state: { url: projUrl } });
     }
   };
 
   const handleElementClick = (projUrl) => {
-    navigate(`/projects/project`, { state: { url: projUrl } });
+    const projId = projUrl.split("/")[5];
+    navigate(`/projects/project/${projId}`, { state: { url: projUrl } });
   };
 
   return (

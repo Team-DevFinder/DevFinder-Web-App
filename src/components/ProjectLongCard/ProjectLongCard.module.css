@@ -1,71 +1,70 @@
-.projectImage{
-    height: 50px;
+.projectImage {
+  height: 50px;
 }
-.projectCard{
-    background: #333;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    margin-top: 1em;
-    padding: 1em;
-    border-radius: 8px;
-    position: relative;
-    max-width: 43vw;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    /* cursor: pointer; */
-    
+.projectCard {
+  background: #333;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 1em;
+  padding: 1em;
+  border-radius: 8px;
+  position: relative;
+  max-width: 43vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
 }
-.projectInfo{
-    color: #fff;
-    font-size: 0.875em;
+.projectCard:hover {
+  background-color: #3c3b3b;
 }
-.links{
-    position: absolute;
-    right: 10%;
-    display: grid;
-    cursor: pointer;
+.projectInfo {
+  color: #fff;
+  font-size: 0.875em;
 }
-.icon{
-    color: aliceblue;
+.links {
+  position: absolute;
+  right: 10%;
+  display: grid;
+  cursor: pointer;
 }
-.icon:hover{
-    color: var(--first-color);
+.icon {
+  color: aliceblue;
 }
-.about{
-    max-width: 30vw;
-    /* background: red; */
-    overflow: hidden;
-    text-overflow: ellipsis;
-
+.icon:hover {
+  color: var(--first-color);
 }
-.editButton{
-    position: absolute;
-    right: 0.5%;
-    top: 7%;
-    background: none;
-    border: none;
-    outline: none;
-    color: #fff;
-    /* background-color: #eee; */
-    cursor: pointer;
-    
+.about {
+  max-width: 30vw;
+  /* background: red; */
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-.editButton:hover{
-    color: var(--first-color-alt)
+.editButton {
+  position: absolute;
+  right: 0.5%;
+  top: 7%;
+  background: none;
+  border: none;
+  outline: none;
+  color: #fff;
+  /* background-color: #eee; */
+  cursor: pointer;
 }
-.editButton2{
-    position: absolute;
-    right: 0.5%;
-    bottom: 7%;
-    background: none;
-    border: none;
-    outline: none;
-    color: #fff;
-    /* background-color: #eee; */
-    cursor: pointer;
-    
+.editButton:hover {
+  color: var(--first-color-alt);
 }
-.editButton2:hover{
-    color: red;
+.editButton2 {
+  position: absolute;
+  right: 0.5%;
+  bottom: 7%;
+  background: none;
+  border: none;
+  outline: none;
+  color: #fff;
+  /* background-color: #eee; */
+  cursor: pointer;
+}
+.editButton2:hover {
+  color: red;
 }
