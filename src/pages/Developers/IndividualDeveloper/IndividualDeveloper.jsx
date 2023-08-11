@@ -133,7 +133,6 @@ export const IndividualDeveloper = () => {
                 const currentUserArr = userMap?.filter(
                   (obj) => obj.project === proj.url
                 );
-                console.log("ssssssssssssssssssssssssssss", currentUserArr);
                 return (
                   <Link to={`/projects/project/${proj.url.split("/")[5]}`}>
                     <ShortProjectCard

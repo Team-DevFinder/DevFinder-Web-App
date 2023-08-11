@@ -37,6 +37,8 @@ export const AccountInfo = (props) => {
     toast.error("Your project has been removed");
   };
 
+  const [userMap, setUserMap] = useState([]);
+
   const fetchProfile = async () => {
     // const response = await api.get("/user-api/current-user/");
     // console.log(response);
@@ -52,6 +54,24 @@ export const AccountInfo = (props) => {
     );
     console.log("projects", projectsResponse);
     setProject(projectsResponse.data.results);
+    const projects = projectsResponse.data.results;
+
+    const userIds = projects.map((project) => project.owner);
+    console.log("userIDs", userIds);
+    const userProfiles = await Promise.all(
+      userIds.map(async (id) => {
+        const res = await api.get(`user-api/profiles/${id}/`);
+        return res.data;
+      })
+    );
+    console.log("userProfiles", userProfiles);
+
+    const userProfileMap = userProfiles.map((user, index) => {
+      const currentProject = projects[index].url;
+      return { project: currentProject, username: user.username };
+    });
+    console.log("userProfileMap", userProfileMap);
+    setUserMap(userProfileMap);
   };
 
   // const fetchProjects = async() => {
@@ -262,29 +282,34 @@ export const AccountInfo = (props) => {
                     image={Image}
                   /> */}
 
-              {project?.map((proj) => (
-                <>
-                  {/* <div>{proj.title}</div>
+              {project?.map((proj) => {
+                const currentUserArr = userMap?.filter(
+                  (obj) => obj.project === proj.url
+                );
+                return (
+                  <>
+                    {/* <div>{proj.title}</div>
                     <div>{proj.owner}</div>
                     <div onClick={() => deleteProject(proj.url)}>Delete</div>
                     <Link to={`/update-project`} state={{url: proj.url}}><div>Update</div></Link>
                     <br /> */}
-                  {/* <Link to="/projects/project" state={{ url: proj.url }}> */}
-                  <ProjectLongCard
-                    owner={proj.owner}
-                    title={proj.title}
-                    image={proj.featuredImage}
-                    projectUrl={proj.url}
-                    deleteProject={deleteProject}
-                    updateProject={updateProject}
-                    sourceLink={proj.sourceLink}
-                    demoLink={proj.demoLink}
-                    handleContainerClick={handleContainerClick}
-                    handleElementClick={handleElementClick}
-                  />
-                  {/* </Link> */}
-                </>
-              ))}
+                    {/* <Link to="/projects/project" state={{ url: proj.url }}> */}
+                    <ProjectLongCard
+                      owner={currentUserArr[0]?.username}
+                      title={proj.title}
+                      image={proj.featuredImage}
+                      projectUrl={proj.url}
+                      deleteProject={deleteProject}
+                      updateProject={updateProject}
+                      sourceLink={proj.sourceLink}
+                      demoLink={proj.demoLink}
+                      handleContainerClick={handleContainerClick}
+                      handleElementClick={handleElementClick}
+                    />
+                    {/* </Link> */}
+                  </>
+                );
+              })}
             </div>
           </div>
         </div>
