@@ -27,6 +27,8 @@ export const IndividualDeveloper = () => {
 
   const defaultText = "No projects";
 
+  const [userMap, setUserMap] = useState([]);
+
   const fetchProfile = async () => {
     const response = await api.get(profileUrl);
     console.log("profile", response.data);
@@ -36,6 +38,24 @@ export const IndividualDeveloper = () => {
     const projectsResponse = await api.get(`${profileUrl}projects/`);
     console.log("projects", projectsResponse);
     setProject(projectsResponse.data.results);
+    const projects = projectsResponse.data.results;
+
+    const userIds = projects.map((project) => project.owner);
+    console.log("userIDs", userIds);
+    const userProfiles = await Promise.all(
+      userIds.map(async (id) => {
+        const res = await api.get(`user-api/profiles/${id}/`);
+        return res.data;
+      })
+    );
+    console.log("userProfiles", userProfiles);
+
+    const userProfileMap = userProfiles.map((user, index) => {
+      const currentProject = projects[index].url;
+      return { project: currentProject, username: user.username };
+    });
+    console.log("userProfileMap", userProfileMap);
+    setUserMap(userProfileMap);
   };
 
   useEffect(() => {
@@ -109,15 +129,21 @@ export const IndividualDeveloper = () => {
             <hr />
             <h2>PROJECTS</h2>
             <div className={styles.projectSection}>
-              {project?.map((proj) => (
-                <Link to={`/projects/project/${proj.url.split("/")[5]}`}>
-                  <ShortProjectCard
-                    image={proj.featuredImage}
-                    projectName={proj.title}
-                    projectDeveloper={proj.owner}
-                  />
-                </Link>
-              ))}
+              {project?.map((proj) => {
+                const currentUserArr = userMap?.filter(
+                  (obj) => obj.project === proj.url
+                );
+                console.log("ssssssssssssssssssssssssssss", currentUserArr);
+                return (
+                  <Link to={`/projects/project/${proj.url.split("/")[5]}`}>
+                    <ShortProjectCard
+                      image={proj.featuredImage}
+                      projectName={proj.title}
+                      projectDeveloper={currentUserArr[0]?.username}
+                    />
+                  </Link>
+                );
+              })}
 
               {/* <ShortProjectCard
                 image={ProjectImage}
