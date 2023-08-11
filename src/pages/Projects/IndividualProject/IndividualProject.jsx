@@ -26,6 +26,8 @@ export const IndividualProject = (props) => {
 
   const api = useAxios();
 
+  const [currentUser, setCurrentUser] = useState();
+
   const fetchProject = async () => {
     try {
       const response = await api.get(projUrl);
@@ -33,6 +35,11 @@ export const IndividualProject = (props) => {
       const project = response.data;
       setMyData(project);
       setTags(project.tags.map((tag) => tag.name));
+
+      const userId = project.owner;
+      const resUser = await api.get(`user-api/profiles/${userId}/`);
+      setCurrentUser(resUser?.data.username);
+      // console.log("resssssssssss", resUser);
 
       console.log(`${projUrl}reviews/`);
       try {
@@ -153,7 +160,7 @@ export const IndividualProject = (props) => {
               <b>{myData.title}</b>
             </p>
             <p className={styles.projectDeveloper}>
-              <i>By {myData.owner}</i>
+              <i>By {currentUser ? currentUser : null}</i>
             </p>
             <br />
             <p className={styles.aboutProject}>
