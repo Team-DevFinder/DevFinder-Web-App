@@ -11,9 +11,11 @@ import axios from "axios";
 import { Pagination } from "../../components/Pagination/Pagination";
 import { baseURL } from "../../utils/config";
 import { AuthContext } from "../../context/AuthContext";
+import { useAxios } from "../../utils/useAxios";
 
 export const Projects = () => {
   const navigate = useNavigate();
+  const api = useAxios();
   const { logoutUser, isLoggedIn } = useContext(AuthContext);
   const [myData, setMyData] = useState([]);
   const [isError, setIsError] = useState("");
@@ -29,18 +31,39 @@ export const Projects = () => {
     project.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  const [userMap, setUserMap] = useState([]);
+
+  const getData = async () => {
+    try {
+      const response = await axios.get(`${baseURL}project-api/projects/`);
+      const data = response.data;
+      const projects = data.results;
+      setData(projects);
+
+      const userIds = projects.map((project) => project.owner);
+      console.log("userIDs", userIds);
+      const userProfiles = await Promise.all(
+        userIds.map(async (id) => {
+          const res = await api.get(`user-api/profiles/${id}/`);
+          return res.data;
+        })
+      );
+      console.log("userProfiles", userProfiles);
+
+      const userProfileMap = userProfiles.map((user, index) => {
+        const currentProject = projects[index].url;
+        return { project: currentProject, username: user.username };
+      });
+      console.log("userProfileMap", userProfileMap);
+      setUserMap(userProfileMap);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
-    axios
-      .get(
-        `${baseURL}project-api/projects/?page=${currentPage}&per_page=${itemsPerPage}`
-      )
-      .then((response) => {
-        const data = response.data;
-        const projects = data.results;
-        setData(projects); // Set the 'data' variable to 'projects'
-      })
-      .catch((error) => setIsError(error.message));
-  }, [currentPage, itemsPerPage]);
+    getData();
+  }, []);
   console.log(data);
 
   const handlePageChange = (pageNumber) => {
@@ -51,6 +74,8 @@ export const Projects = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     return data.slice(startIndex, endIndex).map((item, index) => {
+      const currentUserArr = userMap?.filter((obj) => obj.project === item.url);
+
       if (!item) {
         return null;
       }
@@ -62,7 +87,7 @@ export const Projects = () => {
               <ProjectCard
                 image={item.featuredImage}
                 projectName={item.title}
-                projectDeveloper={item.owner}
+                projectDeveloper={currentUserArr[0]?.username}
                 // projectFeedback={item.voteRatio}
                 // voteCount={item.voteTotal}
               />
@@ -72,7 +97,7 @@ export const Projects = () => {
               <ProjectCard
                 image={item.featuredImage}
                 projectName={item.title}
-                projectDeveloper={item.owner}
+                projectDeveloper={currentUserArr[0]?.username}
                 // projectFeedback={item.voteRatio}
                 // voteCount={item.voteTotal}
               />
@@ -86,17 +111,23 @@ export const Projects = () => {
   const renderFiltered = () => {
     return (
       <>
-        {filteredProjects.map((project) => (
-          <Link to={`/projects/project/${project.url.split("/")[5]}`}>
-            <ProjectCard
-              image={project.featuredImage}
-              projectName={project.title}
-              projectDeveloper={project.owner}
-              // projectFeedback={project.voteRatio}
-              // voteCount={project.voteTotal}
-            />
-          </Link>
-        ))}
+        {filteredProjects.map((project) => {
+          const currentUserArr = userMap?.filter(
+            (obj) => obj.project === project.url
+          );
+
+          return (
+            <Link to={`/projects/project/${project.url.split("/")[5]}`}>
+              <ProjectCard
+                image={project.featuredImage}
+                projectName={project.title}
+                projectDeveloper={currentUserArr[0]?.username}
+                // projectFeedback={project.voteRatio}
+                // voteCount={project.voteTotal}
+              />
+            </Link>
+          );
+        })}
       </>
     );
   };

@@ -27,7 +27,7 @@ const Forums = () => {
     setTotalPages(Math.ceil(response.data.count / 6));
 
     const userIds = forumData.map((forum) => forum.creator);
-    console.log("userID", userIds);
+    console.log("userIDs", userIds);
     const userProfiles = await Promise.all(
       userIds.map(async (id) => {
         const res = await api.get(`user-api/profiles/${id}/`);
