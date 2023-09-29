@@ -134,7 +134,7 @@ export const Login = () => {
                   <input
                     className={styles.inputField}
                     type="text"
-                    placeholder="Username"
+                    placeholder="Enter your username"
                     onChange={(e) => {
                       setRegisterUsername(e.target.value);
                     }}
@@ -150,7 +150,7 @@ export const Login = () => {
                   <input
                     className={styles.inputField}
                     type="password"
-                    placeholder="Password"
+                    placeholder="Enter your password"
                     onChange={(e) => {
                       setRegisterPassword(e.target.value);
                     }}
@@ -291,8 +291,6 @@ export const Login = () => {
           </div>
         </div>
 
-        
-
         <div className={styles.wrapper2}>
           <BounceLoader
             loading={loading}
@@ -307,16 +305,12 @@ export const Login = () => {
           />
           <div className={styles.container}>
             <div className={styles.formsWraps}>
-
-            
-
-            <form
+              <form
                 action="#"
                 onSubmit={(e) => {
                   e.preventDefault();
                 }}
                 className={styles.signInContainer}
-                
               >
                 <h2 style={{ color: "#fff" }} onClick={testAuth}>
                   Log In
@@ -361,28 +355,19 @@ export const Login = () => {
                     <p>Continue with Google</p>
                   </button>
                 </div>
-
                 <p>Do not have an account?</p>
-                <button  className={styles.button} onClick={() => {
-                      navigate("/signup");
-                    }}>
-                    Sign Up
+                <button
+                  className={styles.button}
+                  onClick={() => {
+                    navigate("/signup");
+                  }}
+                >
+                  Sign Up
                 </button>
               </form>
-
-             
-
-              
-              
             </div>
-
-            
-              
-            
           </div>
         </div>
-
-        
       </main>
       <Toaster />
     </>
