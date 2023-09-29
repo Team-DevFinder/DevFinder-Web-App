@@ -212,7 +212,7 @@ export const Login = () => {
                     className={styles.button}
                     onClick={() => handleLogin()}
                   >
-                    Sign In
+                    Log In
                   </button>
                   <div className={styles.paragraph}>OR</div>
                   <button className={styles.googleBtn} onClick={googleLogin}>
