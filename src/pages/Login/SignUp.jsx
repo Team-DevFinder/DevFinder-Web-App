@@ -133,7 +133,7 @@ export const SignUp = () => {
         }}
       />
       <br /><br />
-      <button className={styles.button2} onClick={handleRegister}>
+      <button className="signupbutton" onClick={handleRegister}>
         Sign Up
       </button>
     </div>
