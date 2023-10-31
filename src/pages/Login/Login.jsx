@@ -55,6 +55,7 @@ export const Login = () => {
     );
     console.log(response);
     toggle(true);
+    navigate("/");
   };
 
   const api = useAxios();
